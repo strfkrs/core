@@ -4,7 +4,7 @@ source ~/emsdk/emsdk_env.sh
 
 CC="emcc"
 
-DESTINATIONS="$(cat ./.server_directory)"
+DESTINATIONS="$(cat ~/.screeps_server_directory)"
 FUNCTIONS="init isInitialized initData run debug reset"\
 " addRoom setRoomData getRoomData selectNextRoom isCurrentRoomActive"\
 " addCreep setCreepData getCreepData selectNextCreep isCurrentCreepActive"\
