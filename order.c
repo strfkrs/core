@@ -68,7 +68,7 @@ bool_t selectNextOrder()
 }
 bool_t isCurrentOrderActive()    { return ( ! isOrderQueueEnd() && ( currentOrder->source != NULL || currentOrder->target != NULL ) ); }
 bool_t setCurrentOrderRecieved() { return ( ! isOrderQueueEnd() && (currentOrder->isRecieved = TRUE) ); }
-bool_t isCurrentOrderRecieved()  { return ( ! isOrderQueueEnd() && currentOrder->isRecieved ); }
+bool_t isCurrentOrderRecieved()  { return ( isOrderQueueEnd() || currentOrder->isRecieved ); }
 
 orderField_t getOrderDataFlags() { return currentOrder->dataFlags; }
 orderField_t getOrderData( shortFlags_t field )
