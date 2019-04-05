@@ -9,7 +9,6 @@ static const shortFlags_t CREEP_FLAG_HOSTILE = 0b00000010;
 
 typedef enum CREEP_ROLE
 {
-   CREEP_ROLE_NONE,
    CREEP_ROLE_WORKER
 
 } CREEP_ROLE;
@@ -48,6 +47,7 @@ typedef struct Room Room;
 
 typedef struct Creep
 {
+   bool_t          active;
    shortFlags_t    flags;
    Room*           room;
    CREEP_ROLE      role;

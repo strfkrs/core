@@ -22,7 +22,7 @@ for f in $FUNCTIONS; do
 done
 CCFUNCTIONS+="]";
 
-CCFILES="core.c room.c creep.c structure.c order.c orderTools.c orderFactory.c"
+CCFILES="core.c room.c creep.c structure.c order.c orderTools.c orderFactory.c orders/spawn.c"
 CCTARGET="core.wasm"
 CCFLAGS="-s WASM=1 -s SIDE_MODULE=1 -s EXPORTED_FUNCTIONS=${CCFUNCTIONS} -O3"
 

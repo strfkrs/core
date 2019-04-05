@@ -32,6 +32,7 @@ typedef struct Room Room;
 
 typedef struct Structure
 {
+   bool_t          active;
    shortFlags_t    flags;
    STRUCTURE_TYPE  type;
    Room*           room;

@@ -13,10 +13,7 @@ void initStructures()
 {
    for( currentStructure = structures; currentStructure < &structures[MAX_STRUCTURES]; currentStructure++ )
    {
-      currentStructure->flags = 0;
-      currentStructure->type = 0;
-      currentStructure->energy = 0;
-      currentStructure->maxEnergy = 0;
+      currentStructure->active = FALSE;
    }
    currentStructure = structures;
 }
@@ -24,7 +21,7 @@ void        resetCurrentStructure()                 { currentStructure = structu
 Structure*  getCurrentStructure()                   { return currentStructure; }
 
 bool_t isStructureQueueEnd(Structure* structure)    { return    structure >= &structures[MAX_STRUCTURES]; }
-bool_t isStructureActive(Structure* structure)      { return  ! isStructureQueueEnd(structure) && structure->flags; }
+bool_t isStructureActive(Structure* structure)      { return  ! isStructureQueueEnd(structure) && structure->active; }
 bool_t isCurrentStructureQueueEnd()                 { return    isStructureQueueEnd(currentStructure); }
 bool_t isCurrentStructureActive()                   { return    isStructureActive(currentStructure); }
 
@@ -43,8 +40,9 @@ bool_t addStructure( STRUCTURE_TYPE type,
    if ( isCurrentStructureQueueEnd() )
       return FALSE;
 
-   currentStructure->flags = flags;
-   currentStructure->type = type;
+   currentStructure->active = TRUE;
+   currentStructure->flags =  flags;
+   currentStructure->type =   type;
    return TRUE;
 }
 /*

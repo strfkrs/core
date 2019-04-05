@@ -24,6 +24,7 @@ typedef struct Creep Creep;
 
 typedef struct Room
 {
+   bool_t               active;
    shortFlags_t         flags;
    struct Creep*        firstCreep;
    struct Structure*    firstStructure;

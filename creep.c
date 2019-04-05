@@ -12,8 +12,7 @@ void initCreeps()
 {
    for( currentCreep = creeps; currentCreep < &creeps[MAX_CREEPS]; currentCreep++ )
    {
-      currentCreep->flags = 0;
-      currentCreep->role = CREEP_ROLE_NONE;
+      currentCreep->active = FALSE;
    }
    currentCreep = creeps;
 }
@@ -30,7 +29,7 @@ Creep* getCurrentCreep()
 
 
 bool_t isCreepQueueEnd(Creep* creep) { return creep >= &creeps[MAX_CREEPS]; }
-bool_t isCreepActive(Creep* creep) { return ! isCreepQueueEnd(creep) && creep->role != CREEP_ROLE_NONE; }
+bool_t isCreepActive(Creep* creep) { return ! isCreepQueueEnd(creep) && creep->active; }
 bool_t isCurrentCreepQueueEnd() { return isCreepQueueEnd(currentCreep); }
 bool_t isCurrentCreepActive() { return isCreepActive(currentCreep); }
 
@@ -48,7 +47,8 @@ bool_t addCreep( shortFlags_t flags )
 {
    if ( isCurrentCreepQueueEnd() )
       return FALSE;
-   currentCreep->flags = flags;
+   currentCreep->flags =  flags;
+   currentCreep->active = TRUE;
    return TRUE;
 }
 /*

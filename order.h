@@ -1,22 +1,24 @@
 #pragma once
 #include "core.h"
 
+static const queueMax_t MAX_ORDER_DATA = 3;
+
 typedef enum ORDER_TYPE
 {
-   ORDER_TYPE_NONE,
-   ORDER_TYPE_SPAWN_WORKER,
+   ORDER_TYPE_SPAWN,
    ORDER_TYPE_ASSIGN_ACTION
 
 } ORDER_TYPE;
 
 typedef struct Order
 {
-   ORDER_TYPE       type;
-   Entity*          source;
-   Entity*          target;
-   orderData_t      data;
-   shortFlags_t     dataFlags;
-   bool_t           isRecieved;
+   bool_t            active;
+   ORDER_TYPE        type;
+   queueCounter_t    source;
+   queueCounter_t    target;
+   orderData_t       data[MAX_ORDER_DATA];
+   shortFlags_t      dataFlags;
+   bool_t            isRecieved;
 
 } Order;
 
@@ -34,8 +36,9 @@ extern void resetCurrentOrder();
 extern const Order* getCurrentOrder();
 extern bool_t selectNextOrder();
 extern bool_t isCurrentOrderActive();
-extern bool_t addOrder( const ORDER_TYPE  type,
-                        const Entity*     source,
-                        const Entity*     target,
-                        const orderData_t data );
+extern bool_t addOrder( const ORDER_TYPE     type,
+                        const queueCounter_t source,
+                        const queueCounter_t target );
+extern bool_t setOrderData( const queueCounter_t index,
+                            const orderData_t data);
 extern const queueCounter_t getOrderIndex(Order* order);

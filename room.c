@@ -12,7 +12,7 @@ void initRooms()
 {
    for( currentRoom = rooms; currentRoom < &rooms[MAX_ROOMS]; currentRoom++ )
    {
-      currentRoom->flags = 0;
+      currentRoom->active = FALSE;
    }
    currentRoom = rooms;
 }
@@ -23,7 +23,7 @@ void resetCurrentRoom()
 Room* getCurrentRoom() { return currentRoom; }
 bool_t isRoomQueueEnd(Room* room)   { return    room >= &rooms[MAX_ROOMS]; }
 bool_t isCurrentRoomQueueEnd()      { return    isRoomQueueEnd(currentRoom); }
-bool_t isRoomActive(Room* room)     { return  ! isRoomQueueEnd(room) && room->flags; }
+bool_t isRoomActive(Room* room)     { return  ! isRoomQueueEnd(room) && room->active; }
 bool_t isCurrentRoomActive()        { return    isRoomActive(currentRoom); }
 
 bool_t selectNextRoom()
@@ -44,6 +44,7 @@ bool_t addRoom( const shortFlags_t flags )
    currentRoom->firstCreep = getCurrentCreep();
    currentRoom->firstStructure = getCurrentStructure();
    currentRoom->flags = flags;
+   currentRoom->active = TRUE;
    return TRUE;
 }
 /*
