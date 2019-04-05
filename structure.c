@@ -50,32 +50,32 @@ bool_t addStructure( STRUCTURE_TYPE type,
  * STRUCTURE DATA
  *
  */
-bool_t setStructureData( STRUCTURE_DATA_TYPE type, structureData_t data )
+bool_t setCurrentStructureMember( STRUCTURE_MEMBER member, structureData_t data )
 {
    if ( isCurrentStructureQueueEnd() )
       return FALSE;
-   switch( type )
+   switch( member )
    {
-      case STRUCTURE_DATA_FLAGS:            currentStructure->flags |= (shortFlags_t) data; break;
-      case STRUCTURE_DATA_STRUCTURE_TYPE:   currentStructure->type = (STRUCTURE_TYPE) data; break;
-      case STRUCTURE_DATA_ENERGY:           currentStructure->energy = (energy_t) data; break;
-      case STRUCTURE_DATA_MAX_ENERGY:       currentStructure->maxEnergy = (energy_t) data; break;
+      case STRUCTURE_MEMBER_FLAGS:            currentStructure->flags |= (shortFlags_t) data; break;
+      case STRUCTURE_MEMBER_STRUCTURE_TYPE:   currentStructure->type = (STRUCTURE_TYPE) data; break;
+      case STRUCTURE_MEMBER_ENERGY:           currentStructure->energy = (energy_t) data; break;
+      case STRUCTURE_MEMBER_MAX_ENERGY:       currentStructure->maxEnergy = (energy_t) data; break;
       default: return FALSE;
    }
     return TRUE;
 }
 
-structureData_t getStructureData( STRUCTURE_DATA_TYPE type )
+structureData_t getCurrentStructureMember( STRUCTURE_MEMBER member )
 {
    if ( isCurrentStructureQueueEnd() )
       return FALSE;
-   switch (type)
+   switch ( member )
    {
-      case STRUCTURE_DATA_ID:               return getStructureIndex(currentStructure);
-      case STRUCTURE_DATA_FLAGS:            return currentStructure->flags;
-      case STRUCTURE_DATA_STRUCTURE_TYPE:   return currentStructure->type;
-      case STRUCTURE_DATA_ENERGY:           return currentStructure->energy;
-      case STRUCTURE_DATA_MAX_ENERGY:       return currentStructure->maxEnergy;
+      case STRUCTURE_MEMBER_ID:               return getStructureIndex(currentStructure);
+      case STRUCTURE_MEMBER_FLAGS:            return currentStructure->flags;
+      case STRUCTURE_MEMBER_STRUCTURE_TYPE:   return currentStructure->type;
+      case STRUCTURE_MEMBER_ENERGY:           return currentStructure->energy;
+      case STRUCTURE_MEMBER_MAX_ENERGY:       return currentStructure->maxEnergy;
       default: return DATA_ERROR;
    }
 }

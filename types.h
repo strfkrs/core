@@ -11,7 +11,7 @@ typedef unsigned char       bool_t;
 typedef unsigned int        size_t;
 
 typedef long                orderField_t;
-typedef unsigned char       orderData_t;
+typedef unsigned short      orderData_t;
 
 typedef unsigned char       queueCounter_t;
 typedef const unsigned char queueMax_t;

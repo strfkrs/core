@@ -52,30 +52,30 @@ bool_t addRoom( const shortFlags_t flags )
  * ROOM DATA
  *
  */
-bool_t setRoomData( ROOM_DATA_TYPE type, creepData_t data )
+bool_t setCurrentRoomMember( ROOM_MEMBER member, creepData_t data )
 {
    if ( isCurrentRoomQueueEnd() )
       return FALSE;
-   switch (type)
+   switch (member)
    {
-      case ROOM_DATA_FLAGS:         currentRoom->flags |= (shortFlags_t)data; break;
-      case ROOM_DATA_ENERGY:        currentRoom->energy = (energy_t)data; break;
-      case ROOM_DATA_MAX_ENERGY:    currentRoom->maxEnergy = (energy_t)data; break;
+      case ROOM_MEMBER_FLAGS:         currentRoom->flags |= (shortFlags_t)data; break;
+      case ROOM_MEMBER_ENERGY:        currentRoom->energy = (energy_t)data; break;
+      case ROOM_MEMBER_MAX_ENERGY:    currentRoom->maxEnergy = (energy_t)data; break;
       default: return FALSE;
    }
    return TRUE;
 }
 
-creepData_t getRoomData( ROOM_DATA_TYPE type )
+creepData_t getCurrentRoomMember( ROOM_MEMBER member )
 {
    if ( isCurrentRoomQueueEnd() )
       return FALSE;
-   switch (type)
+   switch (member)
    {
-      case ROOM_DATA_ID:            return getRoomIndex(currentRoom);
-      case ROOM_DATA_FLAGS:         return currentRoom->flags;
-      case ROOM_DATA_ENERGY:        return currentRoom->energy;
-      case ROOM_DATA_MAX_ENERGY:    return currentRoom->maxEnergy;
+      case ROOM_MEMBER_ID:            return getRoomIndex(currentRoom);
+      case ROOM_MEMBER_FLAGS:         return currentRoom->flags;
+      case ROOM_MEMBER_ENERGY:        return currentRoom->energy;
+      case ROOM_MEMBER_MAX_ENERGY:    return currentRoom->maxEnergy;
       default: return DATA_ERROR;
    }
 }

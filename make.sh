@@ -6,10 +6,10 @@ CC="emcc"
 
 DESTINATIONS="$(cat ~/.screeps_server_directory)"
 FUNCTIONS="init isInitialized initData run debug reset"\
-" addRoom setRoomData getRoomData selectNextRoom isCurrentRoomActive"\
-" addCreep setCreepData getCreepData selectNextCreep isCurrentCreepActive"\
-" addStructure setStructureData getStructureData selectNextStructure isCurrentStructureActive"\
-" getOrderData selectNextOrder isCurrentOrderActive isCurrentOrderRecieved setCurrentOrderRecieved"
+" addRoom setCurrentRoomMember getCurrentRoomMember selectNextRoom isCurrentRoomActive"\
+" addCreep setCurrentCreepMember getCurrentCreepMember selectNextCreep isCurrentCreepActive"\
+" addStructure setCurrentStructureMember getCurrentStructureMember selectNextStructure isCurrentStructureActive"\
+" getCurrentOrderMember getCurrentOrderData selectNextOrder isCurrentOrderActive isCurrentOrderRecieved setCurrentOrderRecieved"
 
 
 

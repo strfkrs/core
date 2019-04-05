@@ -23,8 +23,9 @@ bool_t addSpawnOrder()
          if(    structure->type == STRUCTURE_TYPE_SPAWN
              && structure->energy == structure->maxEnergy )
          {
-            addOrder( ORDER_TYPE_SPAWN, getStructureIndex( structure ), 0 );
-            setOrderData(0, structure->energy );
+            setOrder( ORDER_TYPE_SPAWN, getStructureIndex( structure ), 0 );
+            setCurrentOrderData(0, CREEP_ROLE_WORKER );
+            setCurrentOrderData(1, structure->energy );
          }
       }
 

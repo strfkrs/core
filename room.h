@@ -9,14 +9,14 @@ static const shortFlags_t ROOM_FLAG_OWN =     0b00000001;
 static const shortFlags_t ROOM_FLAG_HOSTILE = 0b00000010;
 static const shortFlags_t ROOM_FLAG_NEUTRAL = 0b00000100;
 
-typedef enum ROOM_DATA_TYPE
+typedef enum ROOM_MEMBER
 {
-   ROOM_DATA_ID,
-   ROOM_DATA_FLAGS,
-   ROOM_DATA_ENERGY,
-   ROOM_DATA_MAX_ENERGY
+   ROOM_MEMBER_ID,
+   ROOM_MEMBER_FLAGS,
+   ROOM_MEMBER_ENERGY,
+   ROOM_MEMBER_MAX_ENERGY
 
-} ROOM_DATA_TYPE;
+} ROOM_MEMBER;
 //
 // STRUCTS
 //
